@@ -1,11 +1,12 @@
 {
-  "name": "node-react-template",
+  "name": "spek-lietuva",
   "version": "1.0.0",
-  "description": "",
+  "description": "place guessing game",
   "main": "index.js",
   "scripts": {
     "build": "cd client && npm run build",
     "install-client": "cd client && npm install",
+    "install-all": "npm install && npm run install-client",
     "heroku-postbuild": "npm run install-client && npm run build",
     "start": "cross-env NODE_ENV=production node server.js",
     "client": "cd client && npm start",
@@ -13,18 +14,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/evamik/portfolio.git"
+    "url": "git+https://github.com/kolegos/SpekLietuva.git"
   },
-  "author": "Evaldas Mikalauskas",
+  "author": "Evaldas Mikalauskas, Edgaras Navickas, Tomas Jorudas",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/evamik/portfolio/issues"
+    "url": "https://github.com/Kolegos/SpekLietuva.git"
   },
-  "homepage": "https://github.com/evamik/portfolio#readme",
+  "homepage": "https://github.com/Kolegos/SpekLietuva.git#readme",
   "dependencies": {
     "concurrently": "^5.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "semver": "^7.3.2"
   }
 }
