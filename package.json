@@ -1,0 +1,30 @@
+{
+  "name": "node-react-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "start": "cross-env NODE_ENV=production node server.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently -n 'server,client' -c 'red,green'  \"nodemon server.js\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evamik/portfolio.git"
+  },
+  "author": "Evaldas Mikalauskas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evamik/portfolio/issues"
+  },
+  "homepage": "https://github.com/evamik/portfolio#readme",
+  "dependencies": {
+    "concurrently": "^5.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  }
+}
