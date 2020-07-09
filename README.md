@@ -1,5 +1,5 @@
 <p align="center">
-  <img height="325px" width="232px" src="https://en.wikipedia.org/wiki/Vilnius#/media/File:Vilnus_Montage_(2020).png"/>
+  <img height="325px" width="232px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Vilnus_Montage_%282020%29.png/800px-Vilnus_Montage_%282020%29.png"/>
 </p>
 <h1 align="center">Spėk Lietuvą</h1>
 <h3 align="center">Place guessing game</h3>
