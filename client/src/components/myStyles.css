@@ -1,0 +1,10 @@
+.primary {
+    color: orange;
+    font-size: 72px;
+}
+
+.postCard {
+    border: 1px solid blue;
+    padding: 0.5rem 2rem
+}
+
