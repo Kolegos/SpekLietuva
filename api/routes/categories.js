@@ -1,8 +1,9 @@
 const { Router, Request, Response } = require("express");
 const route = Router();
 
-module.exports = () => {
-  route.get("/categories/get", (req, res) => {
+module.exports = (app) => {
+  app.use("/categories", route);
+  route.get("/get", (req, res) => {
     connection.query(`SELECT * FROM spek_lietuva.category`, (err, results) => {
       if (err) throw err;
       //res.send("parejo rezultatai");

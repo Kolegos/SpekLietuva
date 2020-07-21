@@ -5,7 +5,7 @@ const categories = require("./routes/categories");
 module.exports = () => {
   const app = Router();
   // And include them in the export
-  categories();
+  categories(app);
 
   return app;
 };
