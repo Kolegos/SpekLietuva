@@ -1,3 +1,18 @@
+:root {
+  --cms-primary: #424242;
+  --cms-text-primary: #ffffff;
+  --cms-primary-light: #6d6d6d;
+  --cms-text-primary-light: #ffffff;
+  --cms-secondary: #dedede;
+  --cms-secondary-light: #eeeeee;
+  --cms-text-secondary: #000000;
+  --cms-text-secondary-light: #000000;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +50,47 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.flex-flow {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.w-50p {
+  width: 50%;
+}
+
+.cms-primary {
+  background-color: var(--cms-primary);
+  color: var(--cms-text-primary);
+}
+
+.cms-primary-light {
+  background-color: var(--cms-primary-light);
+  color: var(--cms-text-primary-light);
+}
+
+.cms-secondary {
+  background-color: var(--cms-secondary);
+  color: var(--cms-text-secondary);
+}
+
+.cms-secondary-light {
+  background-color: var(--cms-secondary-light);
+  color: var(--cms-text-secondary-light);
+}
+
+.cms-category-item {
+  height: 120px;
+  width: 120px;
+}
+
+.border {
+  border: thin;
+  border-radius: 6px;
+}
+
+.center {
+  text-align: center;
 }
