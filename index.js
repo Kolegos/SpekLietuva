@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const connection = require("./database");
 const app = express();
+const routes = require("./api");
 
 app.use(cors(), bodyParser.urlencoded({ extended: true }), bodyParser.json());
 const port = process.env.PORT || 5000;
@@ -20,15 +21,8 @@ if (process.env.NODE_ENV === "production") {
   );
 }
 
+app.use("/api", routes());
 app.get("/", (req, res) => res.send("Hello world!"));
-
-app.get("/categories/get", (req, res) => {
-  connection.query(`SELECT * FROM spek_lietuva.category`, (err, results) => {
-    if (err) throw err;
-    //res.send("parejo rezultatai");
-    res.json(results);
-  });
-});
 
 http.listen(port, () => {
   console.log(`listening on ${port}`);
