@@ -1,4 +1,5 @@
 const { Router, Request, Response } = require("express");
+const connection = require("./database");
 const route = Router();
 
 module.exports = (app) => {
