@@ -6,7 +6,6 @@ const cors = require("cors");
 const connection = require("./database");
 const app = express();
 const routes = require("./api");
-const auth0 = require("./auth0");
 
 app.use(cors(), bodyParser.urlencoded({ extended: true }), bodyParser.json());
 const port = process.env.PORT || 5000;
