@@ -14,9 +14,12 @@ module.exports = (app) => {
   });
 
   route.post("/set", (req, res) => {
-    connection.query(`UPDATE spek_lietuva.category SET name = "${req.body.name}" WHERE category_id = ${req.body.id}`, (err, results) => {
-      if (err) throw err;
-      res.json(results);
-    });
-  })
+    connection.query(
+      `UPDATE spek_lietuva.category SET name = "${req.body.name}" WHERE category_id = ${req.body.id}`,
+      (err, results) => {
+        if (err) throw err;
+        res.json(results);
+      }
+    );
+  });
 };
