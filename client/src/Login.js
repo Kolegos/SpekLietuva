@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Login = () => {
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect, isAuthenticated, email } = useAuth0();
   useEffect(() => {
-    loginWithRedirect();
+    if (!isAuthenticated) loginWithRedirect();
   }, []);
 
-  return <div>loginas</div>;
+  return <div>{email}</div>;
 };
 
 export default Login;
