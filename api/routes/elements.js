@@ -16,7 +16,7 @@ module.exports = (app) => {
       });
   });
 
-  route.get("/getPhotos", (req, res) => {
+  route.get("/getPhotosInfo", (req, res) => {
     const placeID = req.query.placeID;
     axios
       .get(
@@ -24,6 +24,17 @@ module.exports = (app) => {
       )
       .then((response) => {
         if (response.data.result) res.json(response.data.result.photos);
+      });
+  });
+
+  route.get("/getPhoto", (req, res) => {
+    const reference = req.query.reference;
+    axios
+      .get(
+        `https://maps.googleapis.com/maps/api/place/photo?maxheight=800&maxwidth=600&photoreference=${req.query.reference}&key=${process.env.API_KEY}`
+      )
+      .then((response) => {
+        res.send(response.request._redirectable._options.href);
       });
   });
 };
