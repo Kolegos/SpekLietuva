@@ -8,11 +8,18 @@ const Elements = () => {
   const [imageLink, setImageLink] = useState("");
   const [loadUrls, setLoadUrls] = useState(0);
   const [loadReferences, setLoadReference] = useState(0);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const url =
     process.env.NODE_ENV === `production`
-      ? `/api/categories`
+      ? `/api/elements`
       : "http://localhost:5000/api/elements";
+
+  const urlDB =
+    process.env.NODE_ENV === `production`
+      ? `/api/categories`
+      : "http://localhost:5000/api/categories";
 
   useEffect(() => {
     if (loadReferences !== 0) {
@@ -51,6 +58,13 @@ const Elements = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadUrls]);
 
+  useEffect(() => {
+    axios.get(urlDB + "/get").then((res) => {
+      setCategories(res.data);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   function handleSearchClick(e) {
     e.preventDefault();
     axios.get(url + "/getId", { params: { queryToApi: query } }).then((res) => {
@@ -59,6 +73,40 @@ const Elements = () => {
       setLoadReference(loadReferences + 1);
     });
   }
+
+  function handleUpload(e) {
+    e.preventDefault();
+    let upload = true;
+
+    if (Object.keys(place).length === 0 || place.name === "") {
+      alert("Nėra pavadinimo");
+      upload = false;
+    }
+    if (imageLink === "") {
+      alert("Nėra nuorodos");
+      upload = false;
+    }
+    if (selectedCategory === "") {
+      alert("Nėra kategorijos");
+      upload = false;
+    }
+
+    if (upload) {
+      axios
+        .post(urlDB + "/uploadElement", {
+          name: place.name,
+          image_link: imageLink,
+          latitude: place.geometry.location.lat,
+          longtitude: place.geometry.location.lng,
+          fk_category_id: selectedCategory,
+        })
+        .then((res) => {
+          if (res.status !== 200)
+            alert("Įvyko klaida susisiekiant su duomenų baze!");
+        });
+    }
+  }
+
   return (
     <div>
       <h4>Įvesk užklausą</h4>
@@ -80,7 +128,28 @@ const Elements = () => {
           }}
         ></input>
       </div>
+      <div>
+        <label htmlFor="category">Kategorija</label>
+        <select
+          id="category"
+          onChange={(e) => {
+            setSelectedCategory(e.target.value);
+          }}
+        >
+          <option value="none">Pasirink kategoriją</option>
+          {categories.length === 0
+            ? null
+            : categories.map((category, index) => {
+                return (
+                  <option value={category.category_id} key={index}>
+                    {category.name}
+                  </option>
+                );
+              })}
+        </select>
+      </div>
       <button onClick={handleSearchClick}>Ieškoti</button>
+      <button onClick={handleUpload}>Įkeltį į duombazę</button>
       {Object.keys(place).length === 0 ? null : (
         <div>
           <h3>{place.name}</h3>
@@ -90,7 +159,14 @@ const Elements = () => {
           <div>
             {links.length !== 0
               ? links.map((link, index) => {
-                  return <img src={link} alt="" key={index}></img>;
+                  return (
+                    <img
+                      src={link}
+                      alt=""
+                      key={index}
+                      style={{ maxWidth: "400px", maxHeight: "300px" }}
+                    ></img>
+                  );
                 })
               : null}
           </div>

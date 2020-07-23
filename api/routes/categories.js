@@ -22,4 +22,15 @@ module.exports = (app) => {
       }
     );
   });
+
+  route.post("/uploadElement", (req, res) => {
+    console.log(req.body);
+    connection.query(
+      `INSERT INTO spek_lietuva.element(name,image_link,latitude,longtitude,fk_category_id)VALUES('${req.body.name}','${req.body.image_link}','${req.body.latitude}','${req.body.longtitude}','${req.body.fk_category_id}')`,
+      (err, results) => {
+        if (err) throw err;
+        res.sendStatus(200);
+      }
+    );
+  });
 };
