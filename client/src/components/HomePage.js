@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import './myStyles.css';
+import '../App.css';
+import CategorieCards from "./CategoriesCards"
 
 class HomePage extends Component {
   render() {
     return (
        <div>
-           <h1 className='primary'>Labuka</h1>
+         
+           <CategorieCards/>
         </div>
     );
   }
