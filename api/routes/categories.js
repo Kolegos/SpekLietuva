@@ -33,9 +33,4 @@ module.exports = (app) => {
       }
     );
   });
-    connection.query(`UPDATE spek_lietuva.category SET name = "${req.body.name}" WHERE category_id = ${req.body.id}`, (err, results) => {
-      if (err) throw err;
-      res.json(results);
-    });
-  })
 };
