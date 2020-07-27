@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.use("/api", routes());
-app.get("/", (req, res) => res.send("Hello world!"));
+app.get("/", (req, res) => res.send("Hello world"));
 
 http.listen(port, () => {
   console.log(`listening on ${port}`);
