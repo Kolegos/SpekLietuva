@@ -33,4 +33,24 @@ module.exports = (app) => {
       }
     );
   });
+
+  route.get("/getQuestions", (req, res) => {
+    connection.query(
+      `SELECT * FROM spek_lietuva.element WHERE fk_category_id=${req.query.categoryID}`,
+      (err, results) => {
+        if (err) throw err;
+        res.json(results);
+      }
+    );
+  });
+
+  route.get("/getChoices", (req, res) => {
+    connection.query(
+      `SELECT name FROM spek_lietuva.element WHERE fk_category_id=${req.query.categoryID}`,
+      (err, results) => {
+        if (err) throw err;
+        res.json(results);
+      }
+    );
+  });
 };

@@ -31,6 +31,7 @@
     "mysql": "^2.18.1",
     "nodemon": "^2.0.4",
     "react-router-dom": "^5.2.0",
-    "semver": "^7.3.2"
+    "semver": "^7.3.2",
+    "shuffle-array": "^1.0.1"
   }
 }
