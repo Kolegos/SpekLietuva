@@ -22,7 +22,7 @@ const Question = ({ question, onNextClicked, choices }) => {
   return (
     <div>
       <div>
-        <img src={question.image_link} />
+        <img src={question.image_link} alt="" />
       </div>
       <section>
         <div>
