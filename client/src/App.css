@@ -142,3 +142,137 @@ body {
 .btn:hover {
   background-color: RoyalBlue;
 }
+
+.BackroundImg{
+  opacity: 1;
+}
+.containerHomePage {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.centeredHomePageTitle {
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: white;
+  font-size: 30px;
+  background: linear-gradient(5deg, #C1272D, #006A44, #FDB913);
+  background-size: 50%;
+  width: calc(15% + 4px);
+  height: calc(15% + 4px);
+  animation: glowing 20s linear infinite;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+  z-index: 1;
+  transition: top .5s ease;
+}
+
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.5s ease;
+}
+.containerForNav{
+  
+  overflow: hidden;
+}
+.containerForNav:hover .overlay {
+  display: block;
+  background: rgba(0, 0, 0, .3);
+}
+
+.containerForNav:hover .centeredHomePageTitle {
+  top: 90px;
+}
+
+.buttonNav {
+  position: absolute;
+  width: 2500px;
+  left:0;
+  top: 300px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.buttonNav a {
+  float:left;
+  width: 200px;
+  padding: 12px 60px;
+  text-align: center;
+  color: white;
+  
+  z-index: 1;
+  margin-left:130px;
+
+}
+.containerForNav:hover .buttonNav {
+  opacity: 1;
+}
+.glow-on-hover {
+  width: 220px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(45deg, #C1272D, #006A44, #FDB913);
+  position: absolute;
+  top: -2px;
+  left:-2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+.glow-on-hover:active {
+  color: #000
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
