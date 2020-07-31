@@ -4,11 +4,11 @@ import "../../App.css";
 class NavBar extends Component{
     render(){
         return(
-            <div class="containerHomePage">
-                <div class="BackroundImg">
-                    <img width="1500px" height="750px" 
-                    src="https://www.guliveriokeliones.lt/files/2019-02/9898_slider.jpg"/>
-                </div>
+            <div >
+  
+                <img class="BackroundImg"
+                src="https://www.makalius.lt/wp-content/gallery/nida-galerija-6-foto-paid/nida-laikrodis-saules-13746.jpg?v=11e6b9b030871d14"/>
+                
                 <div class="containerForNav">
                 <p><button class="centeredHomePageTitle" type="button">Spėk Lietuvą!</button></p>
                 <div class="overlay"></div>
@@ -27,7 +27,7 @@ class NavBar extends Component{
                     </a>
 
                 </div>
-                
+
                     
                 </div>
                 
