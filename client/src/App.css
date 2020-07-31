@@ -9,8 +9,17 @@
   --cms-text-secondary-light: #000000;
 }
 
-body {
+html,
+body,
+body div {
   font-family: "Roboto", sans-serif;
+  min-height: 450px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
 }
 
 .App {
@@ -146,6 +155,7 @@ body {
 .centeredHomePageTitle {
   display: inline-block;
   position: absolute;
+  min-height: 50px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -182,6 +192,7 @@ body {
   box-sizing: border-box;
   background-image: url("https://www.makalius.lt/wp-content/gallery/nida-galerija-6-foto-paid/nida-laikrodis-saules-13746.jpg?v=11e6b9b030871d14");
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-position: 50% 50%;
 }
 .overlay {
@@ -191,13 +202,18 @@ body {
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0);
-  transition: background 2.5s ease;
+  transition: background 0.5s ease;
 }
 .containerForNav {
   overflow: hidden;
 }
+
+.containerForNav:hover .glow-on-hover {
+  top: 200px;
+}
+
 .containerForNav:hover .overlay {
-  
+  display: block;
   background: rgba(0, 0, 0, 0.3);
 }
 
@@ -206,14 +222,14 @@ body {
 }
 
 .buttonNav {
-  
+  position: absolute;
   width: 100%;
   height: 100%;
-  left: 0;
+  left: 0%;
+  top: 0%;
   text-align: center;
   opacity: 0;
   transition: opacity 0.35s ease;
-  
 }
 
 .buttonNav a {
@@ -223,15 +239,15 @@ body {
   text-align: center;
   color: white;
   z-index: 1;
-  
 }
 .containerForNav:hover .buttonNav {
   opacity: 1;
-  
 }
 .glow-on-hover {
   width: 220px;
   height: 50px;
+  margin: 10px 10px 10px 10px;
+  top: 0;
   border: none;
   outline: none;
   color: #fff;
@@ -240,7 +256,7 @@ body {
   position: relative;
   z-index: 0;
   border-radius: 10px;
-  
+  transition: top ease 0.5s;
 }
 
 .glow-on-hover:before {
