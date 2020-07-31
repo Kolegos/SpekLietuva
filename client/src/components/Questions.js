@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Question from "./Question";
+import ProgressBar from "./ProgressBar";
 const shuffle = require("shuffle-array");
 
 const Questions = (props) => {
@@ -122,11 +123,7 @@ const Questions = (props) => {
           <button onClick={resetQuiz}>Bandyk dar kartą</button>
           <h1>Surinkai {score}</h1>
         </>
-      ) : (
-        <div>
-          {currentIndex + 1} / {questions.length}
-        </div>
-      )}
+      ) : null}
     </div>
   ) : (
     <h1>Loading</h1>

@@ -20,27 +20,40 @@ const Question = ({ question, onNextClicked, choices }) => {
   };
 
   return (
-    <div>
+    <div className="question">
       <div>
-        <img src={question.image_link} alt="" />
+        <img className="question-image" src={question.image_link} alt="" />
       </div>
-      <section>
-        <div>
-          {answered && <button onClick={resetQuestion}>Kitas klausimas</button>}
-        </div>
-        {choices.map((choice, index) => {
-          return (
+      <div>
+        <div className="question-next-question">
+          {answered && (
             <button
-              key={index}
-              onClick={() => onChoiceClicked(choice)}
-              disabled={answered && isCorrect(choice)}
+              className="question-next-choice"
+              style={{ width: "70%" }}
+              onClick={resetQuestion}
             >
-              <span>{answered ? (isCorrect(choice) ? "✔" : "X") : null}</span>
-              {choice.name}
+              Kitas klausimas
             </button>
-          );
-        })}
-      </section>
+          )}
+        </div>
+        <div>
+          {choices.map((choice, index) => {
+            return (
+              <button
+                className="question-choice"
+                key={index}
+                onClick={() => onChoiceClicked(choice)}
+                disabled={answered && isCorrect(choice)}
+              >
+                <span style={{ color: isCorrect(choice) ? "green" : "red" }}>
+                  {answered ? (isCorrect(choice) ? "✔" : "X") : null}
+                </span>
+                {choice.name}
+              </button>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };
