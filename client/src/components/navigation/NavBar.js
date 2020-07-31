@@ -11,7 +11,8 @@ class NavBar extends Component {
               Spėk Lietuvą!
             </button>
           </p>
-          <div className="">
+          <div className="buttonNav">
+          <div className="overlay"></div>
             <a href="#">
               <button className="glow-on-hover" type="button">
                 Kategorijos
