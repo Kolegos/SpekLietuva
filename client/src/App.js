@@ -10,14 +10,12 @@ import Home from "./Home";
 const App = () => {
   return (
     <Router>
-      <Auth0ProviderWithHistory>
-        <Switch>
-          <Route path="/admin/categories" component={Categories} />
-          <Route exact path="/admin" component={Admin} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/" component={Home} />
-        </Switch>
-      </Auth0ProviderWithHistory>
+      <Switch>
+        <Route path="/admin/categories" component={Categories} />
+        <Route exact path="/admin" component={Admin} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/" component={Home} />
+      </Switch>
     </Router>
   );
 };
