@@ -220,6 +220,9 @@ body div {
 .containerForNav:hover .centeredHomePageTitle {
   top: 90px;
 }
+.containerForNav:hover .glow-on-hover {
+  top: 350px;
+}
 
 .buttonNav {
   position: absolute;
@@ -233,12 +236,14 @@ body div {
 }
 
 .buttonNav a {
+  
   float: center;
   width: 200px;
   padding: 12px 60px;
   text-align: center;
   color: white;
   z-index: 1;
+  
 }
 .containerForNav:hover .buttonNav {
   opacity: 1;
