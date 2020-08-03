@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Question from "./Question";
 import ProgressBar from "./ProgressBar";
+import ScoreBar from "./ScoreBar";
+
 const shuffle = require("shuffle-array");
 
 const Questions = (props) => {
@@ -106,10 +108,16 @@ const Questions = (props) => {
   };
 
   return questions.length !== 0 ? (
-    <div>
+    <div className="questions">
       {showFinished ? (
-        <div>
+        <div className="questions-game-end">
           <h1>Šios kategorijos žaidimas baigtas</h1>
+          <h2>Jūsų rezultatas</h2>
+          <div className="arrow">
+            <div className="chevron"></div>
+            <div className="chevron"></div>
+            <div className="chevron"></div>
+          </div>
         </div>
       ) : (
         <Question
@@ -120,10 +128,26 @@ const Questions = (props) => {
       )}
       {showFinished ? (
         <>
-          <button onClick={resetQuiz}>Bandyk dar kartą</button>
-          <h1>Surinkai {score}</h1>
+          <div
+            className="questions-game-end questions-score-bar"
+            style={{ width: "20%", minWidth: "200px" }}
+          >
+            <ScoreBar score={(score / questions.length) * 100} />
+          </div>
+          <div className="questions-try-again">
+            <button className="questions-try-again-button" onClick={resetQuiz}>
+              Bandyk dar kartą
+            </button>
+          </div>
         </>
-      ) : null}
+      ) : (
+        <div>
+          <ProgressBar
+            bgcolor="#3e98c7"
+            completed={Math.round((currentIndex / questions.length) * 100)}
+          />
+        </div>
+      )}
     </div>
   ) : (
     <h1>Loading</h1>

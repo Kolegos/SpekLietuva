@@ -40,14 +40,14 @@ const Question = ({ question, onNextClicked, choices }) => {
           {choices.map((choice, index) => {
             return (
               <button
-                className="question-choice"
+                className={`question-choice`}
+                style={{
+                  color: answered ? (isCorrect(choice) ? "green" : "red") : "",
+                }}
                 key={index}
                 onClick={() => onChoiceClicked(choice)}
                 disabled={answered && isCorrect(choice)}
               >
-                <span style={{ color: isCorrect(choice) ? "green" : "red" }}>
-                  {answered ? (isCorrect(choice) ? "✔" : "X") : null}
-                </span>
                 {choice.name}
               </button>
             );
