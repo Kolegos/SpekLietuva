@@ -5,6 +5,7 @@ import Elements from "./content-management-system/Elements";
 import HomePage from "./components/HomePage";
 import Categories from "./content-management-system/Categories";
 import Questions from "./components/Questions";
+import ScoreBar from "./components/ScoreBar";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           path="/home/category"
           component={() => <Questions categoryID={6} />}
         />
+        <Route path="/nu" component={ScoreBar} />
         <Route path="/home" component={HomePage} />
       </Switch>
     </Router>
