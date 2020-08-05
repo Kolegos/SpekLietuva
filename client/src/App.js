@@ -8,6 +8,11 @@ import Questions from "./components/Questions";
 import AuthProviderWithHistory from "./components/AuthProviderWithHistory";
 import ProfilePage from "./components/ProfilePage";
 import PrivateRoute from "./components/PrivateRoute";
+<<<<<<< HEAD
+=======
+import ScoreBar from "./components/ScoreBar";
+import CardsPage from "./components/CategoriesPage/CardsPage";
+>>>>>>> 03b9032... login and signup working, connected with Auth0
 
 function App() {
   return (
