@@ -1,15 +1,33 @@
-import React, { Component } from "react";
-import '../App.css';
-import CategorieCards from "./CategoriesCards"
+import React from "react";
+import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
-class HomePage extends Component {
-  render() {
-    return (
-       <div>
-         
-           <CategorieCards/>
-        </div>
-    );
+const HomePage = () => {
+  const { loginWithRedirect, logout, isAuthenticated, isLoading } = useAuth0();
+
+  if (isLoading) {
+    return <h1>Palauk tevai</h1>;
   }
-}
+
+  return (
+    <div>
+      {isAuthenticated ? (
+        <>
+          <button onClick={() => logout({ returnTo: window.location.origin })}>
+            Atsijungti
+          </button>
+          <Link to="/profile">Profilis</Link>
+        </>
+      ) : (
+        <>
+          <button onClick={() => loginWithRedirect()}>Prisijungti</button>
+          <button onClick={() => loginWithRedirect({ screen_hint: "signup" })}>
+            Užsiregistruoti
+          </button>
+        </>
+      )}
+    </div>
+  );
+};
+
 export default HomePage;

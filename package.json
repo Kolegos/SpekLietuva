@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/Kolegos/SpekLietuva.git#readme",
   "dependencies": {
+    "@auth0/auth0-react": "^1.0.0",
+    "auth0-react": "^3.1.0",
     "axios": "^0.19.2",
     "concurrently": "^5.2.0",
     "cors": "^2.8.5",

@@ -5,21 +5,25 @@ import Elements from "./content-management-system/Elements";
 import HomePage from "./components/HomePage";
 import Categories from "./content-management-system/Categories";
 import Questions from "./components/Questions";
-import ScoreBar from "./components/ScoreBar";
+import AuthProviderWithHistory from "./components/AuthProviderWithHistory";
+import ProfilePage from "./components/ProfilePage";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
     <Router>
-      <Switch>
-        <Route path="/admin/elements" component={Elements} />
-        <Route path="/admin/categories" component={Categories} />
-        <Route
-          path="/home/category"
-          component={() => <Questions categoryID={6} />}
-        />
-        <Route path="/nu" component={ScoreBar} />
-        <Route path="/home" component={HomePage} />
-      </Switch>
+      <AuthProviderWithHistory>
+        <Switch>
+          <PrivateRoute path="/admin/elements" component={Elements} />
+          <PrivateRoute path="/admin/categories" component={Categories} />
+          <Route
+            path="/home/category"
+            component={() => <Questions categoryID={6} />}
+          />
+          <Route path="/profile" component={ProfilePage} />
+          <Route path="/" component={HomePage} />
+        </Switch>
+      </AuthProviderWithHistory>
     </Router>
   );
 }
