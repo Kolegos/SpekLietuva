@@ -12,7 +12,7 @@ class NavBar extends Component {
             </button>
           </p>
           <div className="buttonNav">
-            <a href="#">
+            <a href="/categories">
               <button className="glow-on-hover" type="button">
                 Kategorijos
               </button>
