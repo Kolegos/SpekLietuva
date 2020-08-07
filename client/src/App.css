@@ -277,7 +277,11 @@ body {
   text-align: center;
   flex: 1 100%;
 }
-
+.arrow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 75px;
+}
 .chevron {
   position: absolute;
   width: 28px;
