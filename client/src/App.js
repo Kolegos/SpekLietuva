@@ -8,11 +8,8 @@ import Questions from "./components/Questions";
 import AuthProviderWithHistory from "./components/AuthProviderWithHistory";
 import ProfilePage from "./components/ProfilePage";
 import PrivateRoute from "./components/PrivateRoute";
-<<<<<<< HEAD
-=======
 import ScoreBar from "./components/ScoreBar";
-import CardsPage from "./components/CategoriesPage/CardsPage";
->>>>>>> 03b9032... login and signup working, connected with Auth0
+import CardsPage from "./components/CategoriesPage/CategoriesCard";
 
 function App() {
   return (
@@ -26,6 +23,7 @@ function App() {
             component={() => <Questions categoryID={6} />}
           />
           <Route path="/profile" component={ProfilePage} />
+          <Route path="/categories" component={CardsPage} />
           <Route path="/" component={HomePage} />
         </Switch>
       </AuthProviderWithHistory>

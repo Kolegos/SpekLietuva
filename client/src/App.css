@@ -10,10 +10,9 @@
 }
 
 html,
-body,
-body div {
+body {
   font-family: "Roboto", sans-serif;
-  min-height: 450px;
+
   margin: 0;
   padding: 0;
   border: 0;
@@ -104,34 +103,8 @@ body div {
   text-align: center;
 }
 
-.container {
-  position: relative;
-  width: 30%;
-}
-
-.image {
-  opacity: 1;
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: 0.5s ease;
-  backface-visibility: hidden;
-  border-radius: 15px;
-}
-
-.middle {
-  transition: 0.5s ease;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  text-align: center;
-}
-
 .container:hover .image {
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 .container:hover .middle {
@@ -163,10 +136,8 @@ body div {
   color: white;
   font-size: 125%;
   background: linear-gradient(5deg, #c1272d, #006a44, #fdb913);
-  background-size: 50%;
   width: calc(20% + 4px);
   height: calc(20% + 4px);
-  animation: glowing 20s linear infinite;
   transition: opacity 0.3s ease-in-out;
   border-radius: 10px;
   z-index: 1;
@@ -194,15 +165,7 @@ body div {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
-}
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0);
-  transition: background 0.5s ease;
+  min-height: 550px;
 }
 .containerForNav {
   overflow: hidden;
@@ -233,17 +196,16 @@ body div {
   text-align: center;
   opacity: 0;
   transition: opacity 0.35s ease;
+  min-height: 550px;
 }
 
 .buttonNav a {
-  
   float: center;
   width: 200px;
   padding: 12px 60px;
   text-align: center;
   color: white;
   z-index: 1;
-  
 }
 .containerForNav:hover .buttonNav {
   opacity: 1;
@@ -303,4 +265,214 @@ body div {
   left: 0;
   top: 0;
   border-radius: 10px;
+}
+.questions {
+  margin: 2%;
+  padding: 2%;
+  flex-wrap: wrap;
+}
+
+.questions-game-end {
+  justify-content: center;
+  text-align: center;
+  flex: 1 100%;
+}
+
+.chevron {
+  position: absolute;
+  width: 28px;
+  height: 8px;
+  opacity: 0;
+  transform: scale3d(0.5, 0.5, 0.5);
+  animation: move 3s ease-out infinite;
+}
+
+.chevron:first-child {
+  animation: move 3s ease-out 1s infinite;
+}
+
+.chevron:nth-child(2) {
+  animation: move 3s ease-out 2s infinite;
+}
+
+.chevron:before,
+.chevron:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 51%;
+  background: #3e98c7;
+}
+
+.chevron:before {
+  left: 0;
+  transform: skew(0deg, 30deg);
+}
+
+.chevron:after {
+  right: 0;
+  width: 50%;
+  transform: skew(0deg, -30deg);
+}
+
+@keyframes move {
+  25% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 1;
+    transform: translateY(30px);
+  }
+  67% {
+    opacity: 1;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+  }
+}
+
+.questions-score-bar {
+  display: block;
+  margin: auto;
+}
+
+.questions-try-again {
+  margin: 1%;
+  padding: 1%;
+  text-align: center;
+}
+
+.questions-try-again-button {
+  color: #ffffff !important;
+  text-transform: uppercase;
+  text-decoration: bold;
+  background: #3e98c7;
+  padding: 20px;
+  border: 4px solid #dedede !important;
+  display: inline-block;
+  transition: all 0.4s ease 0s;
+}
+
+.questions-try-again-button:hover {
+  color: #000000 !important;
+  border: solid;
+  background: #ffffff;
+  border-color: #000000 !important;
+  transition: all 0.4s ease 0s;
+}
+
+.question {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-self: auto;
+  margin: 2%;
+  padding: 2%;
+}
+
+.question-image {
+  max-width: 800px;
+  max-height: 600px;
+  width: 100%;
+  height: 100%;
+  border-radius: 5%;
+}
+
+.question-next-question {
+  text-align: center;
+  width: 100%;
+}
+
+.question-next-choice {
+  margin: 1%;
+  padding: 1%;
+  align-items: center;
+  background: dimgrey;
+  color: white;
+  width: 70%;
+  border-radius: 8px;
+}
+
+.question-choice {
+  margin: 1%;
+  padding: 1%;
+  font-weight: bold;
+  align-items: center;
+  background: white;
+  width: 100%;
+  border-radius: 4px;
+}
+/*category cards layout*/
+
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #40a4d5;
+}
+
+.box {
+  flex: 0 1 30%;
+  margin: 5px;
+  max-width: 30%;
+}
+
+.container {
+  position: relative;
+  max-width: 100%;
+}
+
+.image {
+  float: center;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  margin: 5px;
+  height: 300px;
+  width: 100%;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+  min-height: 10%;
+}
+
+.middle {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+/*category page navbar*/
+.ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #fcb827;
+}
+
+.li {
+  float: left;
+}
+
+.li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.li a:hover {
+  background-color: #111;
 }
