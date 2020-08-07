@@ -10,7 +10,7 @@ class CategoriesCards extends Component {
       <div className="ul">
         <div className="li">
           <a class="active" href="/">
-          Atgal
+          Spėk Lietuvą!
           </a>
           </div>
         
@@ -35,7 +35,7 @@ class CategoriesCards extends Component {
               alt="Avatar" class="image"/>
                   <div class="middle">
                   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-                  <button class="btn"><i class="fa fa-play"></i></button>
+                  <a href="/home/category"><button  class="btn"><i class="fa fa-play"></i></button></a>
                   </div>
             </div>
           </div>
