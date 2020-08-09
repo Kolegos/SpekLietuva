@@ -1,4 +1,4 @@
-const { Router, Request, Response } = require("express");
+const { Router } = require("express");
 const connection = require("../../database");
 const checkJwt = require("../auth/checkJwt");
 const checkRole = require("../auth/checkRole");
@@ -10,7 +10,6 @@ module.exports = (app) => {
   route.get("/get", checkJwt, checkRole("admin"), (req, res) => {
     connection.query(`SELECT * FROM spek_lietuva.category`, (err, results) => {
       if (err) throw err;
-      //res.send("parejo rezultatai");
       res.json(results);
     });
   });
@@ -25,7 +24,7 @@ module.exports = (app) => {
     );
   });
 
-  route.post("/uploadElement", checkJwt, checkRole, (req, res) => {
+  route.post("/uploadElement", checkJwt, checkRole("admin"), (req, res) => {
     console.log(req.body);
     connection.query(
       `INSERT INTO spek_lietuva.element(name,image_link,latitude,longtitude,fk_category_id)VALUES('${req.body.name}','${req.body.image_link}','${req.body.latitude}','${req.body.longtitude}','${req.body.fk_category_id}')`,
