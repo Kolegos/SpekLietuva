@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const ProfilePage = () => {
   const { user, isLoading } = useAuth0();
@@ -12,7 +12,7 @@ const ProfilePage = () => {
 
   return (
     <div>
-      <img src={picture} alt="Profile picture" style={{ maxHeight: "100px" }} />
+      <img src={picture} alt="Profile" style={{ maxHeight: "100px" }} />
       <h2>{name}</h2>
       <p>{email}</p>
       <p>{JSON.stringify(user, null, 2)}</p>

@@ -1,9 +1,15 @@
 const { Router, Request, Response } = require("express");
 const axios = require("axios");
 const route = Router();
+const checkJwt = require("../auth/checkJwt");
+const checkRole = require("../auth/checkRole");
 
 module.exports = (app) => {
   app.use("/elements", route);
+
+  route.get("/checkAuth", checkJwt, checkRole("admin"), (req, res) => {
+    res.sendStatus(200);
+  });
 
   route.get("/getId", (req, res) => {
     const query = req.query.queryToApi;

@@ -1,14 +1,17 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
+import Spinner from "../misc/Spinner";
 
-const PrivateRoute = ({ component, ...args }) => (
-  <Route
-    component={withAuthenticationRequired(component, {
-      onRedirecting: () => <h1>Palauk Tėvai</h1>,
-    })}
-    {...args}
-  />
-);
+const PrivateRoute = ({ component, role, ...args }) => {
+  return (
+    <Route
+      component={withAuthenticationRequired(component, {
+        onRedirecting: () => <Spinner />,
+      })}
+      {...args}
+    />
+  );
+};
 
 export default PrivateRoute;

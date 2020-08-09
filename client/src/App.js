@@ -2,14 +2,13 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Elements from "./content-management-system/Elements";
-import HomePage from "./components/HomePage";
 import Categories from "./content-management-system/Categories";
 import Questions from "./components/Questions";
 import AuthProviderWithHistory from "./components/AuthProviderWithHistory";
 import ProfilePage from "./components/ProfilePage";
 import PrivateRoute from "./components/PrivateRoute";
-import ScoreBar from "./components/ScoreBar";
 import CardsPage from "./components/CategoriesPage/CategoriesCard";
+import NavBar from "./components/navigation/NavBar";
 
 function App() {
   return (
@@ -22,9 +21,9 @@ function App() {
             path="/home/category"
             component={() => <Questions categoryID={6} />}
           />
-          <Route path="/profile" component={ProfilePage} />
+          <PrivateRoute path="/profile" component={ProfilePage} />
           <Route path="/categories" component={CardsPage} />
-          <Route path="/" component={HomePage} />
+          <Route path="/" component={NavBar} />
         </Switch>
       </AuthProviderWithHistory>
     </Router>
