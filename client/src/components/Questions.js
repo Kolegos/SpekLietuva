@@ -32,6 +32,7 @@ const Questions = (props) => {
           alert("Įvyko klaida susisiekiant su duomenų baze");
         shuffledQuestions = shuffle(res.data);
         setQuestions(shuffledQuestions);
+        console.log(shuffledQuestions);
       });
     // eslint-disable-next-line
   }, []);
@@ -124,6 +125,7 @@ const Questions = (props) => {
           onNextClicked={onNextClicked}
           question={currentQuestion}
           choices={slicedChoices}
+          key={currentQuestion.element_id}
         />
       )}
       {showFinished ? (
@@ -141,7 +143,7 @@ const Questions = (props) => {
           </div>
         </>
       ) : (
-        <div>
+        <div id="progressBar">
           <ProgressBar
             bgcolor="#3e98c7"
             completed={Math.round((currentIndex / questions.length) * 100)}

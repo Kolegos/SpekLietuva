@@ -22,7 +22,9 @@ const Question = ({ question, onNextClicked, choices }) => {
   return (
     <div className="question">
       <div>
-        <img className="question-image" src={question.image_link} alt="" />
+        <div className="question-image-wrapper">
+          <img className="question-image" src={question.image_link} alt="" />
+        </div>
       </div>
       <div>
         <div className="question-next-question">
@@ -36,15 +38,16 @@ const Question = ({ question, onNextClicked, choices }) => {
             </button>
           )}
         </div>
-        <div>
+        <div className="choicesWrapper">
           {choices.map((choice, index) => {
             return (
               <button
                 className={`question-choice`}
                 style={{
                   color: answered ? (isCorrect(choice) ? "green" : "red") : "",
+                  "--animation-order": index,
                 }}
-                key={index}
+                key={question.element_id * 100 + index}
                 onClick={() => onChoiceClicked(choice)}
                 disabled={answered && isCorrect(choice)}
               >
