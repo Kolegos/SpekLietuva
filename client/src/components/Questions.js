@@ -124,6 +124,7 @@ const Questions = (props) => {
         <Question
           onNextClicked={onNextClicked}
           question={currentQuestion}
+          prevQuestion={questions[Math.max(currentIndex - 1, 0)]}
           choices={slicedChoices}
           key={currentQuestion.element_id}
         />

@@ -378,7 +378,9 @@ body {
 }
 
 .question-image-wrapper {
+  position: relative;
   height: 399px;
+  width: 600px;
 }
 
 @keyframes ImageAnim {
@@ -396,13 +398,35 @@ body {
   }
 }
 
+@keyframes ImageAnimReverse {
+  100% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  15% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+  0% {
+    transform: scale(1);
+  }
+}
+
 .question-image {
+  position: absolute;
+  left: 0;
   max-width: 600px;
   max-height: 399px;
   width: 100%;
   height: 100%;
   border-radius: 5%;
   animation: ImageAnim 0.4s ease;
+  animation-fill-mode: both;
+}
+
+.question-image-exit {
+  animation: ImageAnimReverse 0.4s ease;
   animation-fill-mode: both;
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Question = ({ question, onNextClicked, choices }) => {
+const Question = ({ question, prevQuestion, onNextClicked, choices }) => {
   const [answered, setAnswered] = useState(false);
   const [selectedChoice, setSelectedChoice] = useState(null);
 
@@ -24,6 +24,13 @@ const Question = ({ question, onNextClicked, choices }) => {
       <div>
         <div className="question-image-wrapper">
           <img className="question-image" src={question.image_link} alt="" />
+          {question != prevQuestion ? (
+            <img
+              className="question-image question-image-exit"
+              src={prevQuestion.image_link}
+              alt=""
+            />
+          ) : null}
         </div>
       </div>
       <div>
