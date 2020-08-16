@@ -20,8 +20,6 @@ const CategoriesCards = () => {
       {categories.map((category) => (
       <div class="box">
       <div key={category.category_id} >
-      
-     
             <div class="container">
               <img src={category.photo} 
               alt="Avatar" class="image"/>
@@ -32,8 +30,6 @@ const CategoriesCards = () => {
             </div>
           </div>
           </div>
-          
-
       ))}
     </div>
   );

@@ -7,7 +7,7 @@ const route = Router();
 module.exports = (app) => {
   app.use("/categories", route);
 
-  route.get("/get", checkJwt,  (req, res) => {
+  route.get("/get",(req, res) => {
     connection.query(`SELECT * FROM spek_lietuva.category`, (err, results) => {
       if (err) throw err;
       res.json(results);
