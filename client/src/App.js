@@ -8,7 +8,6 @@ import Questions from "./components/Questions";
 import AuthProviderWithHistory from "./components/AuthProviderWithHistory";
 import ProfilePage from "./components/ProfilePage";
 import PrivateRoute from "./components/PrivateRoute";
-import ScoreBar from "./components/ScoreBar";
 import CardsPage from "./components/CategoriesPage/CategoriesCard";
 
 function App() {

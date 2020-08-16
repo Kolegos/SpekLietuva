@@ -1,7 +1,7 @@
 import '../../App.css';
-import React, { useState, useEffect,Component } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import useOnclickOutside from "react-cool-onclickoutside";
+
 const url =
   process.env.NODE_ENV === `production`
     ? `/api/categories`

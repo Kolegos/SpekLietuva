@@ -17,12 +17,12 @@ class NavBar extends Component {
                 Kategorijos
               </button>
             </a>
-            <a href="#">
+            <a href="/">
               <button className="glow-on-hover" type="button">
                 Prisijungimas
               </button>
             </a>
-            <a href="#">
+            <a href="/">
               <button className="glow-on-hover" type="button">
                 Registracija
               </button>
