@@ -115,18 +115,34 @@ const Elements = () => {
     }
 
     if (upload) {
-      axios
-        .post(urlDB + "/uploadElement", {
-          name: place.name,
-          image_link: imageLink,
-          latitude: place.geometry.location.lat,
-          longtitude: place.geometry.location.lng,
-          fk_category_id: selectedCategory,
-        })
-        .then((res) => {
-          if (res.status !== 200)
-            alert("Įvyko klaida susisiekiant su duomenų baze!");
-        });
+      (async () => {
+        try {
+          const token = await getAccessTokenWithPopup({
+            audience: `http://localhost:5000`,
+          });
+          const headers = {
+            headers: { Authorization: `Bearer ${token}` },
+          };
+          await axios
+            .post(
+              urlDB + "/uploadElement",
+              {
+                name: place.name,
+                image_link: imageLink,
+                latitude: place.geometry.location.lat,
+                longtitude: place.geometry.location.lng,
+                fk_category_id: selectedCategory,
+              },
+              headers
+            )
+            .then((res) => {
+              if (res.status !== 200)
+                alert("Įvyko klaida susisiekiant su duomenų baze!");
+            });
+        } catch (e) {
+          console.error(e);
+        }
+      })();
     }
   }
 
