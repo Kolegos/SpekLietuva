@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import useOnclickOutside from "react-cool-onclickoutside";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useHistory } from "react-router-dom";
 
 const url =
   process.env.NODE_ENV === `production`
@@ -70,12 +72,31 @@ const Category = (props) => {
 };
 
 const Categories = () => {
+  let history = useHistory();
   const [categories, setCategories] = useState([]);
+  const { getAccessTokenWithPopup } = useAuth0();
 
   useEffect(() => {
-    axios.get(url + "/get").then((res) => {
-      setCategories(res.data);
-    });
+    (async () => {
+      try {
+        const token = await getAccessTokenWithPopup({
+          audience: `http://localhost:5000`,
+        });
+        await axios
+          .get(url + "/get", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then((res) => {
+            setCategories(res.data);
+          });
+      } catch (e) {
+        console.error(e);
+        history.push("/");
+      }
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

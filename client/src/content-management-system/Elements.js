@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useHistory } from "react-router-dom";
 
 const Elements = () => {
   const [query, setQuery] = useState("");
@@ -20,6 +22,34 @@ const Elements = () => {
     process.env.NODE_ENV === `production`
       ? `/api/categories`
       : "http://localhost:5000/api/categories";
+
+  let history = useHistory();
+  const { getAccessTokenWithPopup } = useAuth0();
+  const [authorized, setAuthorized] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const token = await getAccessTokenWithPopup({
+          audience: `http://localhost:5000`,
+        });
+        await axios
+          .get(urlDB + "/get", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then((res) => {
+            setCategories(res.data);
+            setAuthorized(true);
+          });
+      } catch (e) {
+        console.error(e);
+        history.push("/");
+      }
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (loadReferences !== 0) {
@@ -58,13 +88,6 @@ const Elements = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadUrls]);
 
-  useEffect(() => {
-    axios.get(urlDB + "/get").then((res) => {
-      setCategories(res.data);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   function handleSearchClick(e) {
     e.preventDefault();
     axios.get(url + "/getId", { params: { queryToApi: query } }).then((res) => {
@@ -92,20 +115,38 @@ const Elements = () => {
     }
 
     if (upload) {
-      axios
-        .post(urlDB + "/uploadElement", {
-          name: place.name,
-          image_link: imageLink,
-          latitude: place.geometry.location.lat,
-          longtitude: place.geometry.location.lng,
-          fk_category_id: selectedCategory,
-        })
-        .then((res) => {
-          if (res.status !== 200)
-            alert("Įvyko klaida susisiekiant su duomenų baze!");
-        });
+      (async () => {
+        try {
+          const token = await getAccessTokenWithPopup({
+            audience: `http://localhost:5000`,
+          });
+          const headers = {
+            headers: { Authorization: `Bearer ${token}` },
+          };
+          await axios
+            .post(
+              urlDB + "/uploadElement",
+              {
+                name: place.name,
+                image_link: imageLink,
+                latitude: place.geometry.location.lat,
+                longtitude: place.geometry.location.lng,
+                fk_category_id: selectedCategory,
+              },
+              headers
+            )
+            .then((res) => {
+              if (res.status !== 200)
+                alert("Įvyko klaida susisiekiant su duomenų baze!");
+            });
+        } catch (e) {
+          console.error(e);
+        }
+      })();
     }
   }
+
+  if (authorized === false) return <></>;
 
   return (
     <div>
