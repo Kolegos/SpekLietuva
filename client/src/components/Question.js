@@ -24,7 +24,7 @@ const Question = ({ question, prevQuestion, onNextClicked, choices }) => {
       <div>
         <div className="question-image-wrapper">
           <img className="question-image" src={question.image_link} alt="" />
-          {question != prevQuestion ? (
+          {question !== prevQuestion ? (
             <img
               className="question-image question-image-exit"
               src={prevQuestion.image_link}
@@ -54,7 +54,7 @@ const Question = ({ question, prevQuestion, onNextClicked, choices }) => {
                   color: answered ? (isCorrect(choice) ? "green" : "red") : "",
                   "--animation-order": index,
                 }}
-                key={question.element_id * 100 + index}
+                key={index}
                 onClick={() => onChoiceClicked(choice)}
                 disabled={answered && isCorrect(choice)}
               >
