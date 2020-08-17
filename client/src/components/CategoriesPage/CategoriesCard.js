@@ -1,4 +1,4 @@
-import '../../App.css';
+import "../../App.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -10,7 +10,7 @@ const CategoriesCards = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    axios.get(url + "/get").then((res) => {
+    axios.get(url + "/getPublic").then((res) => {
       setCategories(res.data);
     });
   }, []);
@@ -18,22 +18,25 @@ const CategoriesCards = () => {
   return (
     <div className="parent">
       {categories.map((category) => (
-      <div class="box">
-      <div key={category.category_id} >
+        <div class="box">
+          <div key={category.category_id}>
             <div class="container">
-              <img src={category.photo} 
-              alt="Avatar" class="image"/>
-                  <div class="middle">
-                  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-                  <button  class="btn"><i class="fa fa-play"></i></button>
-                  </div>
+              <img src={category.photo} alt="Avatar" class="image" />
+              <div class="middle">
+                <link
+                  rel="stylesheet"
+                  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+                />
+                <button class="btn">
+                  <i class="fa fa-play"></i>
+                </button>
+              </div>
             </div>
           </div>
-          </div>
+        </div>
       ))}
     </div>
   );
 };
 
 export default CategoriesCards;
-

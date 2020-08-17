@@ -7,7 +7,14 @@ const route = Router();
 module.exports = (app) => {
   app.use("/categories", route);
 
-  route.get("/get",(req, res) => {
+  route.get("/get", checkJwt, checkRole("admin"), (req, res) => {
+    connection.query(`SELECT * FROM spek_lietuva.category`, (err, results) => {
+      if (err) throw err;
+      res.json(results);
+    });
+  });
+
+  route.get("/getPublic", (req, res) => {
     connection.query(`SELECT * FROM spek_lietuva.category`, (err, results) => {
       if (err) throw err;
       res.json(results);
@@ -54,5 +61,4 @@ module.exports = (app) => {
       }
     );
   });
-  
 };
