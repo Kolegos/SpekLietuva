@@ -16,7 +16,8 @@ const Questions = (props) => {
   const [showFinished, setShowFinished] = useState(false);
 
   const currentQuestion = questions[currentIndex];
-  const id = Number.isInteger(props.match.params.id) ? id : -1;
+  let id = parseInt(props.match.params.id);
+  id = Number.isInteger(id) ? id : -1;
   let history = useHistory();
 
   const urlDB =
@@ -26,6 +27,7 @@ const Questions = (props) => {
 
   useEffect(() => {
     let shuffledQuestions;
+    console.log(id);
     axios
       .get(urlDB + "/getQuestions", {
         params: { categoryID: id },
