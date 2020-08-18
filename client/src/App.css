@@ -460,29 +460,44 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: #40a4d5;
+  position: relative;
+  align-items: center;
+  padding: 5%;
+}
+
+.parent::after {
+  content: "";
+  background-image: url("https://www.makalius.lt/wp-content/gallery/nida-galerija-6-foto-paid/nida-laikrodis-saules-13746.jpg?v=11e6b9b030871d14");
+  opacity: 0.35;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
 
 .box {
-  flex: 0 1 30%;
-  margin: 5px;
-  max-width: 30%;
+  flex: 1 1 140px;
+  margin: 0.5em;
+  min-width: 30%;
 }
 
 .container {
   position: relative;
   max-width: 100%;
+  margin: auto;
 }
 
 .image {
+  display: block;
   float: center;
+  width: auto;
   max-width: 100%;
-  max-height: 100%;
+  height: auto;
   object-fit: cover;
   border-radius: 15px;
-  margin: 5px;
-  height: 300px;
-  width: 100%;
+  margin: auto;
   box-sizing: border-box;
   background-repeat: no-repeat;
   background-attachment: fixed;
