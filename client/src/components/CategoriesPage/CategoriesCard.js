@@ -19,26 +19,25 @@ const CategoriesCards = () => {
   }, []);
 
   return (
-    <div className="parent">
+    <div className="parent parent-background">
       {categories.map((category) => (
         <div className="box" key={category.category_id}>
           <div
+            className="container"
             key={category.category_id}
             onClick={() => {
               history.push(`/category/${category.category_id}`);
             }}
           >
-            <div className="container">
-              <img src={category.photo} alt="Avatar" className="image" />
-              <div className="middle">
-                <link
-                  rel="stylesheet"
-                  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-                />
-                <button className="btn">
-                  <i className="fa fa-play"></i>
-                </button>
-              </div>
+            <img src={category.photo} alt="Avatar" className="image" />
+            <div className="middle">
+              <link
+                rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+              />
+              <button className="btn">
+                <i className="fa fa-play"></i>
+              </button>
             </div>
           </div>
         </div>
