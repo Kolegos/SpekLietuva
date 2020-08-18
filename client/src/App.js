@@ -17,10 +17,7 @@ function App() {
         <Switch>
           <PrivateRoute path="/admin/elements" component={Elements} />
           <PrivateRoute path="/admin/categories" component={Categories} />
-          <Route
-            path="/home/category"
-            component={() => <Questions categoryID={6} />}
-          />
+          <Route path="/category/:id" component={Questions} />
           <PrivateRoute path="/profile" component={ProfilePage} />
           <Route path="/categories" component={CardsPage} />
           <Route path="/" component={NavBar} />

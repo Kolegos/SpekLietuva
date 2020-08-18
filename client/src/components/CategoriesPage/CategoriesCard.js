@@ -1,13 +1,16 @@
 import "../../App.css";
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 const url =
   process.env.NODE_ENV === `production`
     ? `/api/categories`
     : "http://localhost:5000/api/categories";
+
 const CategoriesCards = () => {
   const [categories, setCategories] = useState([]);
+  let history = useHistory();
 
   useEffect(() => {
     axios.get(url + "/getPublic").then((res) => {
@@ -18,17 +21,22 @@ const CategoriesCards = () => {
   return (
     <div className="parent">
       {categories.map((category) => (
-        <div class="box">
-          <div key={category.category_id}>
-            <div class="container">
-              <img src={category.photo} alt="Avatar" class="image" />
-              <div class="middle">
+        <div className="box" key={category.category_id}>
+          <div
+            key={category.category_id}
+            onClick={() => {
+              history.push(`/category/${category.category_id}`);
+            }}
+          >
+            <div className="container">
+              <img src={category.photo} alt="Avatar" className="image" />
+              <div className="middle">
                 <link
                   rel="stylesheet"
                   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
                 />
-                <button class="btn">
-                  <i class="fa fa-play"></i>
+                <button className="btn">
+                  <i className="fa fa-play"></i>
                 </button>
               </div>
             </div>

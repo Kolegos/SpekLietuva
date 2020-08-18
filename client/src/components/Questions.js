@@ -3,6 +3,7 @@ import axios from "axios";
 import Question from "./Question";
 import ProgressBar from "./ProgressBar";
 import ScoreBar from "./ScoreBar";
+import { useHistory } from "react-router-dom";
 
 const shuffle = require("shuffle-array");
 
@@ -15,6 +16,8 @@ const Questions = (props) => {
   const [showFinished, setShowFinished] = useState(false);
 
   const currentQuestion = questions[currentIndex];
+  const id = Number.isInteger(props.match.params.id) ? id : -1;
+  let history = useHistory();
 
   const urlDB =
     process.env.NODE_ENV === `production`
@@ -25,11 +28,12 @@ const Questions = (props) => {
     let shuffledQuestions;
     axios
       .get(urlDB + "/getQuestions", {
-        params: { categoryID: props.categoryID },
+        params: { categoryID: id },
       })
       .then((res) => {
         if (res.status !== 200)
           alert("Įvyko klaida susisiekiant su duomenų baze");
+        if (res.data.length === 0) history.push("/");
         shuffledQuestions = shuffle(res.data);
         setQuestions(shuffledQuestions);
         console.log(shuffledQuestions);
@@ -40,7 +44,7 @@ const Questions = (props) => {
   useEffect(() => {
     axios
       .get(urlDB + "/getChoices", {
-        params: { categoryID: props.categoryID },
+        params: { categoryID: id },
       })
       .then((res) => {
         if (res.status !== 200)
