@@ -26,18 +26,27 @@ const CategoriesCards = () => {
           style={{ height: window.screen.width > 1280 ? "20em" : "10em" }}
           key={category.category_id}
         >
-          {console.log(window.screen.height)}
           <div
             className="container"
             style={{ height: window.screen.width > 1280 ? "19em" : "9em" }}
             key={category.category_id}
-            onClick={() => {
-              history.push(`/category/${category.category_id}`);
-            }}
           >
-            <p>{category.name}</p>
             <img src={category.photo} alt="Avatar" className="image" />
-            <div className="middle">
+            <div className="text-background"></div>
+            <div
+              className="image-text"
+              style={{
+                fontSize: window.screen.width > 1280 ? "2.5em" : "1.5em",
+              }}
+            >
+              <b>{category.name}</b>
+            </div>
+            <div
+              className="middle"
+              onClick={() => {
+                history.push(`/category/${category.category_id}`);
+              }}
+            >
               <link
                 rel="stylesheet"
                 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
