@@ -29,6 +29,10 @@ connection.connect(function (err) {
     return;
   }
   console.log("Connected as thread id: " + connection.threadId);
+
+  require("./tables/category");
+  require("./tables/element");
+  require("./tables/game_attempt");
 });
 
 module.exports = connection;
