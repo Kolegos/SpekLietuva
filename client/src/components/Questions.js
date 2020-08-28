@@ -115,6 +115,7 @@ const Questions = (props) => {
   };
 
   return questions.length !== 0 ? (
+   
     <div className="questions">
       {showFinished ? (
         <div className="questions-game-end">
@@ -126,6 +127,7 @@ const Questions = (props) => {
             <div className="chevron"></div>
           </div>
         </div>
+      
       ) : (
         <Question
           onNextClicked={onNextClicked}
@@ -144,11 +146,19 @@ const Questions = (props) => {
             <ScoreBar score={(score / questions.length) * 100} />
           </div>
           <div className="questions-try-again">
-            <button className="questions-try-again-button" onClick={resetQuiz}>
+          <button className="questions-try-again-button" onClick={resetQuiz}>
               Bandyk dar kartą
+            </button>
+
+            
+            <button className="questions-try-again-button"  onClick={()=>{
+              history.push("/categories");
+            }}>
+              Grįžti į meniu
             </button>
           </div>
         </>
+       
       ) : (
         <div id="progressBar">
           <ProgressBar
@@ -158,6 +168,7 @@ const Questions = (props) => {
         </div>
       )}
     </div>
+   
   ) : (
     <h1>Loading</h1>
   );

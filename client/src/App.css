@@ -151,7 +151,7 @@ body {
     background-position: 0 0;
   }
 }
-.BackroundImg {
+.BackGroundImg {
   opacity: 1;
   margin: 0px;
   height: 100vh;
@@ -265,6 +265,7 @@ body {
 .questions {
   margin: 32px 32px 16px 32px;
   flex-wrap: wrap;
+  opacity: 1;
 }
 
 .questions-game-end {
@@ -342,6 +343,7 @@ body {
   margin: 1%;
   padding: 1%;
   text-align: center;
+  border-color: black;
 }
 
 .questions-try-again-button {
@@ -353,6 +355,8 @@ body {
   border: 4px solid #dedede !important;
   display: inline-block;
   transition: all 0.4s ease 0s;
+  width:20%;
+  
 }
 
 .questions-try-again-button:hover {
@@ -377,6 +381,7 @@ body {
   position: relative;
   height: 399px;
   width: 600px;
+  
 }
 
 @keyframes ImageAnim {
