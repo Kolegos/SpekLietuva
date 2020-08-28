@@ -21,7 +21,7 @@ const NavBar = () => {
     return <Spinner />;
   }
   return (
-    <div className="BackroundImg">
+    <div className="BackGroundImg">
       <div className="containerForNav">
         <p>
           <button className="centeredHomePageTitle" type="button">

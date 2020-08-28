@@ -38,7 +38,7 @@ const Question = ({ question, prevQuestion, onNextClicked, choices }) => {
           {answered && (
             <button
               className="question-next-choice"
-              style={{ width: "70%" }}
+              
               onClick={resetQuestion}
             >
               Kitas klausimas
