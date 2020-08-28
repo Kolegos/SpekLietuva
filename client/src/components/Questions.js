@@ -41,6 +41,10 @@ const Questions = (props) => {
         console.log(shuffledQuestions);
       });
     // eslint-disable-next-line
+
+    return () => {
+      document.getElementById("root").style.background = "rgb(0 0 0 / 0.0)";
+    };
   }, []);
 
   useEffect(() => {
@@ -73,6 +77,8 @@ const Questions = (props) => {
     if (currentQuestion.name === selectedOption.name) setScore(score + 1);
     if (currentIndex + 1 > questions.length - 1) {
       setShowFinished(true);
+      document.getElementById("root").style.backgroundColor =
+        "rgb(0 0 0 / 0.6)";
       return;
     }
     const shuffledAllChoices = shuffle(allChoices);
@@ -94,6 +100,7 @@ const Questions = (props) => {
   };
 
   const resetQuiz = () => {
+    document.getElementById("root").style.background = "rgb(0 0 0 / 0.0)";
     setCurrentIndex(0);
     setShowFinished(false);
     setScore(0);

@@ -12,13 +12,20 @@
 html,
 body {
   font-family: "Roboto", sans-serif;
-
+  display: grid;
   margin: 0;
   padding: 0;
   border: 0;
   font-size: 100%;
   vertical-align: baseline;
-  background: transparent;
+  background-image: url("./background_blur.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+}
+
+body > div:first-of-type {
+  min-height: 100vh;
 }
 
 .App {
@@ -151,18 +158,7 @@ body {
     background-position: 0 0;
   }
 }
-.BackroundImg {
-  opacity: 1;
-  margin: 0px;
-  height: 100vh;
-  width: auto;
-  box-sizing: border-box;
-  background-image: url("https://www.makalius.lt/wp-content/gallery/nida-galerija-6-foto-paid/nida-laikrodis-saules-13746.jpg?v=11e6b9b030871d14");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: 50% 50%;
-  min-height: 550px;
-}
+
 .containerForNav {
   overflow: hidden;
 }
@@ -210,7 +206,8 @@ body {
   width: 220px;
   height: 50px;
   margin: 10px 10px 10px 10px;
-  top: 0;
+  top: -300px;
+  text-decoration: none;
   border: none;
   outline: none;
   color: #fff;
@@ -339,8 +336,6 @@ body {
 }
 
 .questions-try-again {
-  margin: 1%;
-  padding: 1%;
   text-align: center;
 }
 
@@ -460,18 +455,7 @@ body {
   align-items: stretch;
   padding: 5%;
   pointer-events: none;
-}
-
-.parent::after {
-  content: "";
-  background-image: url("https://www.makalius.lt/wp-content/gallery/nida-galerija-6-foto-paid/nida-laikrodis-saules-13746.jpg?v=11e6b9b030871d14");
-  opacity: 0.35;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .parent:hover > *,
@@ -486,6 +470,10 @@ body {
 .parent > * {
   pointer-events: auto;
   transition: 300ms opacity, 300ms transform;
+}
+
+.parent > * {
+  background: transparent;
 }
 
 .box {
