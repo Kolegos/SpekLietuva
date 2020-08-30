@@ -26,7 +26,7 @@ const CategoriesCards = () => {
        <div></div>
        <div></div>
        <div></div>
-        </div>  
+       </div>  
           
       </button>
       <div className="parent">

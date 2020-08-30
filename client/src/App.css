@@ -137,7 +137,7 @@ body > div:first-of-type {
   transform: translate(-50%, -50%);
   font-style: italic;
   color: white;
-  font-size: 125%;
+  font-size: 200%;
   background: linear-gradient(5deg, #c1272d, #006a44, #fdb913);
   width: calc(20% + 4px);
   height: calc(20% + 4px);
@@ -145,8 +145,19 @@ body > div:first-of-type {
   border-radius: 10px;
   z-index: 1;
   transition: top 0.5s ease;
+  min-width: 10em;
+  
 }
+@media (hover: none) and (pointer: coarse) {
+  .centeredHomePageTitle::after {
+    content: "(Paspausk čia)";
+    font-size: 50%;
+    display: block;
+    
+    
+  }
 
+}
 @keyframes glowing {
   0% {
     background-position: 0 0;
@@ -172,10 +183,10 @@ body > div:first-of-type {
 }
 
 .containerForNav:hover .centeredHomePageTitle {
-  top: 90px;
+  top: 10em;
 }
 .containerForNav:hover .glow-on-hover {
-  top: 350px;
+  top: 40em;
 }
 
 .buttonNav {
@@ -188,6 +199,7 @@ body > div:first-of-type {
   opacity: 0;
   transition: opacity 0.35s ease;
   min-height: 550px;
+  
 }
 
 .buttonNav a {
