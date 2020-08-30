@@ -477,6 +477,7 @@ body > div:first-of-type {
   padding: 5%;
   pointer-events: none;
   background: rgba(0, 0, 0, 0.6);
+  padding-top: 8em;
 }
 
 .parent:hover > *,
@@ -649,4 +650,36 @@ body > div:first-of-type {
 .questions #progressBar {
   vertical-align: bottom;
   
+}
+
+.backButton{
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top:2em;
+  width: 10em;
+  height: 2em;
+  color: white;
+  background-color: #455a64;
+  display:inline-block;
+  cursor: pointer;
+  padding: 0.2em;
+  font-size: 2em;
+  border-radius: 10px;
+}
+
+.menu-icon-container{
+  position: absolute;
+  top:50%;
+  left:5%;
+  transform: translate(0%, -50%);
+
+}
+
+.menu-icon-container > div{
+  background-color: white;
+  width: 0.9em;
+  height: 0.15em;
+  margin:0.1em; 
 }

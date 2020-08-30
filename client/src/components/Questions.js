@@ -38,7 +38,7 @@ const Questions = (props) => {
         if (res.data.length === 0) history.push("/");
         shuffledQuestions = shuffle(res.data);
         setQuestions(shuffledQuestions);
-        console.log(shuffledQuestions);
+        //console.log(shuffledQuestions);
       });
     // eslint-disable-next-line
 

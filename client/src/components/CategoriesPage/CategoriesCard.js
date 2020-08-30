@@ -20,6 +20,15 @@ const CategoriesCards = () => {
 
   return (
     <div>
+      <button className="backButton" onClick={()=>{history.push("/")}}>
+       Meniu
+       <div className="menu-icon-container">
+       <div></div>
+       <div></div>
+       <div></div>
+        </div>  
+          
+      </button>
       <div className="parent">
         {categories.map((category) => (
           <div
