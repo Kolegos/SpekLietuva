@@ -4,10 +4,13 @@ import Question from "./Question";
 import ProgressBar from "./ProgressBar";
 import ScoreBar from "./ScoreBar";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as questionsActions from "../redux/actions/questionsActions";
 
 const shuffle = require("shuffle-array");
 
-const Questions = (props) => {
+const Questions = ({ setReduxQuestions, questionsRedux, ...props }) => {
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -27,7 +30,6 @@ const Questions = (props) => {
 
   useEffect(() => {
     let shuffledQuestions;
-    console.log(id);
     axios
       .get(urlDB + "/getQuestions", {
         params: { categoryID: id },
@@ -38,6 +40,9 @@ const Questions = (props) => {
         if (res.data.length === 0) history.push("/");
         shuffledQuestions = shuffle(res.data);
         setQuestions(shuffledQuestions);
+        console.log(questionsRedux);
+        if (questionsRedux.length === 0) setReduxQuestions(shuffledQuestions);
+
         //console.log(shuffledQuestions);
       });
     // eslint-disable-next-line
@@ -122,7 +127,6 @@ const Questions = (props) => {
   };
 
   return questions.length !== 0 ? (
-   
     <div className="questions">
       {showFinished ? (
         <div className="questions-game-end">
@@ -134,7 +138,6 @@ const Questions = (props) => {
             <div className="chevron"></div>
           </div>
         </div>
-      
       ) : (
         <></>
         /*<Question
@@ -147,7 +150,6 @@ const Questions = (props) => {
       )}
       {showFinished ? (
         <>
-        
           <div
             className="questions-game-end questions-score-bar"
             style={{ width: "20%", minWidth: "200px" }}
@@ -155,42 +157,55 @@ const Questions = (props) => {
             <ScoreBar score={(score / questions.length) * 100} />
           </div>
           <div className="questions-try-again">
-          <button className="questions-try-again-button" onClick={resetQuiz}>
+            <button className="questions-try-again-button" onClick={resetQuiz}>
               Bandyk dar kartą
             </button>
 
-            
-            <button className="questions-try-again-button"  onClick={()=>{
-              history.push("/categories");
-            }}>
+            <button
+              className="questions-try-again-button"
+              onClick={() => {
+                history.push("/categories");
+              }}
+            >
               Grįžti į meniu
             </button>
           </div>
         </>
-       
       ) : (
         <div>
           <div id="progressBar">
-          <ProgressBar
-            bgcolor="#3e98c7"
-            completed={Math.round((currentIndex / questions.length) * 100)}
+            <ProgressBar
+              bgcolor="#3e98c7"
+              completed={Math.round((currentIndex / questions.length) * 100)}
+            />
+          </div>
+          <Question
+            onNextClicked={onNextClicked}
+            question={currentQuestion}
+            prevQuestion={questions[Math.max(currentIndex - 1, 0)]}
+            choices={slicedChoices}
+            key={currentQuestion.element_id}
           />
-        </div>
-        <Question
-          onNextClicked={onNextClicked}
-          question={currentQuestion}
-          prevQuestion={questions[Math.max(currentIndex - 1, 0)]}
-          choices={slicedChoices}
-          key={currentQuestion.element_id}
-        />
-        
         </div>
       )}
     </div>
-   
   ) : (
     <h1>Loading</h1>
   );
 };
 
-export default Questions;
+const mapStateToProps = (state, ownProps) => {
+  const questionsRedux = state.questions.questions;
+  return {
+    questionsRedux,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  setReduxQuestions: bindActionCreators(
+    questionsActions.setQuestions,
+    dispatch
+  ),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Questions);
