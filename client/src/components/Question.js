@@ -36,11 +36,7 @@ const Question = ({ question, prevQuestion, onNextClicked, choices }) => {
       <div>
         <div className="question-next-question">
           {answered && (
-            <button
-              className="question-next-choice"
-              
-              onClick={resetQuestion}
-            >
+            <button className="question-next-choice" onClick={resetQuestion}>
               Kitas klausimas
             </button>
           )}
