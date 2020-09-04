@@ -15,3 +15,12 @@ export function setChoices(allChoices, slicedChoices) {
 export function setSlicedChoices(slicedChoices) {
   return { type: types.SET_SLICED_CHOICES_SUCCESS, slicedChoices };
 }
+export function setScore(score) {
+  return { type: types.SET_SCORE_SUCCESS, score };
+}
+export function getChoices(trigger) {
+  return { type: types.GET_CHOICES, trigger };
+}
+export function reset(slicedChoices, questions) {
+  return { type: types.RESET_QUESTIONS_SUCCESS, slicedChoices, questions };
+}

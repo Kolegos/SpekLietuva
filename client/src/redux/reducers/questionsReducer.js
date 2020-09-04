@@ -8,9 +8,9 @@ export default function questionsReducer(state = [], action) {
         questions: action.questions,
         index: action.index,
         currentQuestion: action.questions[action.index],
+        score: 0,
       };
     case types.SET_INDEX_SUCCESS:
-      console.log(action.index);
       return {
         ...state,
         currentQuestion: state.questions[action.index],
@@ -31,6 +31,25 @@ export default function questionsReducer(state = [], action) {
       return {
         ...state,
         slicedChoices: action.slicedChoices,
+      };
+    case types.SET_SCORE_SUCCESS:
+      return {
+        ...state,
+        score: action.score,
+      };
+    case types.GET_CHOICES:
+      return {
+        ...state,
+        trigger: action.trigger === true ? false : true,
+      };
+    case types.RESET_QUESTIONS_SUCCESS:
+      return {
+        ...state,
+        index: 0,
+        score: 0,
+        slicedChoices: action.slicedChoices,
+        questions: action.questions,
+        currentQuestion: action.questions[0],
       };
     default:
       return state;
